@@ -9,7 +9,7 @@ public class Email {
     private String department;
     private String compnaySuffix = "company.com";
     private String email;
-    private int mailboxCapacity;
+    private int mailboxCapacity = 500;
     private int defaultPasswordLength = 10;
     private String alternateEmail;
 
@@ -17,22 +17,16 @@ public class Email {
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("Email created: " + this.firstName + " " + this.lastName);
-
         //call method asking for dpt
         this.department = setDepartment();
-
         //call method for password
         this.password = randomPassowrd(defaultPasswordLength);
-        System.out.println("Password: " + this.password);
-
-        //
+        //create email
         email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + compnaySuffix;
-        System.out.println("Email is: " + this.email);
     }
 
     private String setDepartment() {
-        System.out.println("Enter department\n1 for Sales\n2 for Dev\n3 for Act\n0 for none\nEnter department code");
+        System.out.println("Enter department\n1 for Sales\n2 for Dev\n3 for Act\n0 for none\nEnter department code: ");
         Scanner in = new Scanner(System.in);
         int depChoice = in.nextInt();
         if (depChoice == 1) {
@@ -57,8 +51,31 @@ public class Email {
     }
 
     //Set mailbox capacity
-
+    public void setMailboxCapacity(int capacity) {
+        this.mailboxCapacity = capacity;
+    }
     //Set alt email
-
+    public void setAlternateEmail(String altEmail) {
+        this.alternateEmail = altEmail;
+    }
     //Passwords
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
+    public int getMailboxCapacity() {
+        return mailboxCapacity;
+    }
+
+    public String getAlternateEmail() {
+        return alternateEmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String showInfo() {
+        return "Display Name: " + firstName + " " + lastName;
+    }
 }
